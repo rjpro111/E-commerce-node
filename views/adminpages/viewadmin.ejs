@@ -1,0 +1,183 @@
+<%- include('./header')%>
+    <div class="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card" style="width: 1200px; margin-left: -250px;">
+                        <div class="card-body">
+                            <form action="">
+                                <input type="text" style="width: 400px; height: 40px;" name="search"
+                                    value="<%=searchinput%>">
+                                <!-- uper nu  lakhyu te input ma search karo te search thay gaya pachi erase na thai -->
+                                <input type="submit" value="submit" style=" height: 40px;">
+                            </form>
+
+                        </div>
+                        <div class="table-responsive">
+                            <form action="/admin/deleteall" method="post">
+                                <table class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>
+                                                <label class="customcheckbox m-b-20">
+                                                    <input type="checkbox" id="multicheck" />
+                                                    <button class="item" data-toggle="tooltip" data-placement="top"
+                                                        title="Delete">
+                                                        <i class="m-r-10 mdi mdi-delete-circle" style="color: red;"></i>
+                                                    </button>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Discription</th>
+                                            <th scope="col">Password</th>
+                                            <th scope="col">City</th>
+                                            <th scope="col">Gender</th>
+                                            <th scope="col">Hobby</th>
+                                            <th scope="col">Image</th>
+                                            <th scope="col">status</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <!-- <tbody>
+                                        <div class="container">
+                                            <div class="row">
+                                                    <%for(v of admindatas){%>
+                                                        <div class="adminclass" style=" margin: 0  0  0  15px;">
+                                                            <div class="adminimage" style="display: flex; align-items: center; justify-content: center; margin-top: 10px;">
+                                                                <img src="<%=v.adminImage%>" height="100px"
+                                                                        width="100" style="border-radius: 50%;">
+                                                            </div>
+                                                            <div class="admindetailes" style="margin-left: 30px;">
+                                                                <h3></h3>
+                                                                <h3><%=v.name%></h3>
+                                                                <p>email:<%=v.email%> </p>
+                                                                <p>password:<%=v.password%></p>
+                                                                <a href="" type="submit" style="border: 1px solid black; padding: 5px;">full detailes</a>
+                                                            </div>
+                                                        </div>
+                                                        <%}%>
+                                            </div>
+                                        </div>
+                                    </tbody> -->
+                                    
+                                    <tbody class="customtable">
+                                        <%if(admindatas!=""){for(var v of admindatas){%>
+                                            <tr style="position: relative;">
+                                                <th>
+                                                    <label class="au-checkbox">
+                                                        <input type="checkbox" class="checkBoxClass" name="deleteall[]"
+                                                            value="<%=v.id%>">
+                                                        <span class="au-checkmark"></span>
+                                                    </label>
+                                                </th>
+                                                <td>
+                                                    <%=v.name%>
+                                                </td>
+                                                <td>
+                                                    <%=v.email%>
+                                                </td>
+                                                <td>
+                                                    <%=v.discription%>
+                                                </td>
+                                                <td>
+                                                    <%=v.password%>
+                                                </td>
+                                                <td>
+                                                    <%=v.city%>
+                                                </td>
+                                                <td>
+                                                    <%=v.gender%>
+                                                </td>
+                                                <td>
+                                                    <%=v.hobby%>
+                                                </td>
+                                                <td><img src="<%=v.adminImage%>" height="70px" width="70"></td>
+                                                <td>
+                                                    <%if(v.isActive){%>
+                                                        <a href="/admin/isactive/<%=v.id%>"
+                                                            class="alert-success px-1 text-grey">Active</a>
+                                                        <%} else{%>
+                                                            <a href="/admin/deactive/<%=v.id%>"
+                                                                class="alert-danger px-1 text-grey">Deactive</a>
+                                                            <%}%>
+                                                </td>
+
+                                                <td>
+                                                    <a href="/admin/deletData/<%=v.id%>"><i
+                                                            class="m-r-10 mdi mdi-delete"
+                                                            style="height: 10px; width: 20px; font-size: 20px;"></i>
+                                                    </a>
+
+                                                    <a href="/admin/updateData/<%=v.id%>"><i
+                                                            class="m-r-10 mdi mdi-border-color"
+                                                            style="position: absolute; height: 10px; width: 20px; font-size: 20px; margin: 3px  0  0  10px;"></i>
+                                                    </a>
+                                                </td>
+
+                                            </tr>
+                                            <%}}else{%>
+                                                <tr class="spacer">
+                                                    <td colspan="10" align="center">NO RECOURD FOUND</td>
+                                                </tr>
+                                                <%}%>
+
+                                                    <tr>
+                                                        <td colspan="10" align="center">
+                                                            <%var prepage=parseInt(curentpage)-1%>
+                                                                <%if(prepage>=0){%>
+                                                                    <a
+                                                                        href="?page=<%=prepage%>&search=<%=searchinput%>">back</a>
+                                                                    <%}%>
+
+                                                                        <a style="border: 2px solid black; padding: 2px 2px 2px 5px; margin-right: 5px;"
+                                                                            href="?page=<%=curentpage%>&search=<%=searchinput%>">
+                                                                            <%=parseInt(curentpage)+1%>
+                                                                        </a>
+
+                                                                        <%var nextpage=parseInt(curentpage)+1%>
+                                                                            <%if(totaldocument>nextpage){%>
+                                                                                <a style="border: 2px solid black; padding: 2px 6px 2px 5px;"
+                                                                                    href="?page=<%=nextpage%>&search=<%=searchinput%>">next</a>
+                                                                                <%}%>
+                                                        </td>
+                                                    </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('./footer') %>
+
+            <script>
+                $(document).ready(function () {
+                    $("#multicheck").click(function () {
+                        $(".checkBoxClass").attr('checked', this.checked);
+                    });
+                });
+            </script>
+
+            <!-- <style>
+                .container {
+                    max-width: 1140px;
+                    margin: 0 auto;
+                    padding: 0 15px;
+                }
+
+                .row {
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+
+                .adminclass {
+                    height: 300px;
+                    width: 260px;
+                    border: 1px solid black;
+                    margin-left: 20px;
+                    border-radius: 10px;
+                }
+            </style> -->

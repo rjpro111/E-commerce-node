@@ -1,0 +1,96 @@
+<%- include('./header')%>
+    <section>
+        <div class="container">
+            <div class="profilecard">
+                    <div class="profile" style="position: relative;">
+                        <a href="/admin/updateprofile/<%=locals.user.id%>">Edit</a>
+                        <div class="profileimg">
+                            <img src="<%= adminData.adminImage %>" height="50px" width="50px" alt="User">
+                        </div>
+                        <div class="detailes">
+                            <h3 class="tt">Name :<span style="padding-left: 20px;">
+                                    <%=adminData.name%>
+                                </span></h3>
+                            <h3 class="tt">Email :<span style="padding-left: 20px;">
+                                    <%=adminData.email%>
+                                </span></h3>
+                            <h3 class="tt">City :<span style="padding-left: 20px;">
+                                    <%=adminData.city%>
+                                </span></h3>
+                            <h3 class="tt">Gender :<span style="padding-left: 20px;">
+                                    <%=adminData.gender%>
+                                </span></h3>
+                            <h3 class="tt">Hobby :<span style="padding-left: 20px;">
+                                    <%=adminData.hobby%>
+                                </span></h3>
+                            <h3 class="tt">Description :<span style="padding-left: 20px;">
+                                    <%=adminData.discription%>
+                                </span></h3>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .profilecard {
+            width: 100%;
+            /* height: 800px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+        }
+
+        .profile {
+            position: relative;
+            margin-top: 100px;
+            width: 550px;
+            height: 615px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            border-radius: 6px;
+            background-color: white;
+        }
+
+        .profileimg img {
+            margin: 10px 0 0 160px;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile a {
+            display: flex;
+            justify-content: center;
+            right: 5px;
+            top: 5px;
+            align-items: center;
+            position: absolute;
+            height: 30px; 
+            width: 50px;
+            color: white;
+            background-color: #4272d7;
+        }
+
+        .detailes {
+            margin-top: 20px;
+        }
+
+        .tt {
+            font-size: 20px;
+            margin: 30px 20px 0px 20px;
+            padding: 5px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        .tt span {
+            font-weight: 500;
+            font-size: 17px;
+        }
+    </style>
+
+<%- include('./footer')%>
+   

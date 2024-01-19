@@ -1,0 +1,121 @@
+<%- include('./header')%>
+    <div class="page-wrapper" style="width: 130%;">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card" style="margin: 0  0  0  -80px;">
+                    <form class="form-horizontal" method="post" action="/admin/insertadmindata"
+                        enctype="multipart/form-data">
+                        <div class="card-body" style="width: 100%;">
+                            <h4 class="card-title">Personal Info</h4>
+                            <div class="form-group row">
+                                <label for="fname" class="col-sm-3 text-right control-label col-form-label">First
+                                    Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="fname" name="fname"
+                                        placeholder="First Name Here">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="lname" class="col-sm-3 text-right control-label col-form-label">Last
+                                    Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="lname" name="lname"
+                                        placeholder="Last Name Here">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email"
+                                    class="col-sm-3 text-right control-label col-form-label">Email</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="lname"
+                                    class="col-sm-3 text-right control-label col-form-label">Password</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="lname" name="password"
+                                        placeholder="Password Here">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="lname"
+                                    class="col-sm-3 text-right control-label col-form-label">Select-City</label>
+                                <% var city=["Surat","Rajkot","Vadodara","Ahmedabad"]%>
+                                    <div class="col-12 col-md-9">
+                                        <select name="city" id="select" class="form-control">
+                                            <option value="">Select City</option>
+                                            <%for(var v of city){%>
+                                                <option value="<%=v%>">
+                                                    <%=v%>
+                                                </option>
+                                                <%}%>
+                                        </select>
+                                    </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="lname"
+                                    class="col-sm-3 text-right control-label col-form-label">Gender</label>
+                                <div class="col-sm-9">
+                                    <div class="form-check-inline form-check">
+                                        <label for="inline-radio1" class="form-check-label mx-1"
+                                            style="margin-top: 10px;">
+                                            <input type="radio" id="inline-radio1" name="gender" value="Male"
+                                                class="form-check-input">Male
+                                        </label>
+                                        <label for="inline-radio2" class="form-check-label mx-1 "
+                                            style="margin-top: 10px;">
+                                            <input type="radio" id="inline-radio2" name="gender" value="Female"
+                                                class="form-check-input">Female
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="lname"
+                                    class="col-sm-3 text-right control-label col-form-label">Hobby</label>
+                                <div class="col-sm-9">
+                                    <div class="form-check-inline form-check">
+                                        <label for="inline-checkbox1" class="form-check-label mx-1"
+                                            style="margin-top: 5px;">
+                                            <input type="checkbox" id="inline-checkbox1" name="hobby" value="Dancing"
+                                                class="form-check-input">Dancing
+                                            <label for="inline-checkbox2" class="form-check-label mx-1"
+                                                style="margin-top: 5px;">
+                                                <input type="checkbox" id="inline-checkbox2" name="hobby"
+                                                    value="Singing" class="form-check-input">Singing
+                                            </label>
+                                            <label for="inline-checkbox3" class="form-check-label mx-1"
+                                                style="margin-top: 5px;">
+                                                <input type="checkbox" id="inline-checkbox3" name="hobby"
+                                                    value="Reading" class="form-check-input">Reading
+                                            </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="cono1"
+                                    class="col-sm-3 text-right control-label col-form-label">Discription</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" name="discription"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="lname"
+                                    class="col-sm-3 text-right control-label col-form-label">file-input</label>
+                                <div class="col-sm-9">
+                                    <input type="file" id="file-input" name="adminImage" class="form-control-file">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-top">
+                            <div class="card-body">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('./footer') %>

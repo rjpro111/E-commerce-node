@@ -1,0 +1,150 @@
+<%- include('./header')%>
+
+    <div class="page-wrapper">
+        <div class="formcontainer">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <form class="form-horizontal" method="post" action="/admin/product/insertproductdata" enctype="multipart/form-data">
+                            <div class="card-body" style="width: 100%;">
+                                <h4 class="card-title">Category Info</h4>
+                                <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Select
+                                        Category</label>
+                                    <div class="col-12 col-md-9">
+                                        <select name="catogry" id="product-catogry" class="form-control"
+                                            onchange="return getsubcat()">
+                                            <option value="">Select Category</option>
+                                            <%for(var v of categoryData){%>
+                                                <option value="<%=v.id%>">
+                                                    <%=v.category%>
+                                                </option>
+                                                <%}%>
+                                        </select>
+                                    </div>
+
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Select
+                                        SubCategory</label>
+                                    <div class="col-12 col-md-9">
+                                        <select name="subcategory" id="Subcatogry" class="form-control"
+                                            onchange="return getextracat()">
+                                            <option value="">Select SubCategory</option>
+                                            <%for(var v of subcategoryData){%>
+                                                <option value="<%=v.id%>">
+                                                    <%=v.subcategory%>
+                                                </option>
+                                                <%}%>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Add
+                                        Extracategory</label>
+                                    <div class="col-sm-9">
+                                        <select name="extracategory" id="extracategory" class="form-control"
+                                            onchange="getbrand()">
+                                            <option value="">Select ExtraCategory</option>
+                                            <%for(var v of extracategoryData){%>
+                                                <option value="<%=v.id%>">
+                                                    <%=v.subcategory%>
+                                                </option>
+                                                <%}%>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Add
+                                        Brand</label>
+                                    <div class="col-sm-9">
+                                        <select name="brand" id="brand" class="form-control" onchange="gettype()">
+                                            <option value="">Select Brand</option>
+                                            <%for(var v of brandData){%>
+                                                <option value="<%=v.id%>">
+                                                    <%=v.brand%>
+                                                </option>
+                                                <%}%>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="type" class="col-sm-3 text-right control-label col-form-label">Add
+                                        type</label>
+                                    <div class="col-sm-9">
+                                        <!-- <input type="text" id="type" class="form-control" name="type" placeholder="type"> -->
+                                        <select name="type" id="type" class="form-control">
+                                            <option value="">Select Type</option>
+                                            <%for(var v of typeData){%>
+                                                <option value="<%=v.id%>">
+                                                    <%=v.type%>
+                                                </option>
+                                                <%}%>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Product Title</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="title" name="title"
+                                            placeholder="Add Product Here">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Product Price</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="price" name="price"
+                                            placeholder="Add Product Here">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Product Old Price</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="oldprice" name="oldprice"
+                                            placeholder="Add Product Here">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Product Colour</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="productColour" name="productColour"
+                                            placeholder="Add Product Colour Here">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Product Size</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="productsize" name="productsize"
+                                            placeholder="Add Product Size Here">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Product Discription</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" name="discription" id="discription" placeholder="Add ProductDescription"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Product-Image</label>
+                                    <div class="col-sm-9">
+                                        <input type="file" id="productimg" name="productimg" class="form-control-file">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Product-Images</label>
+                                    <div class="col-sm-9">
+                                        <input type="file" id="formFileMultiple" name="multipleproductimage" multiple class="form-control-file" multiple>
+                                    </div>
+                                </div>
+
+                                <div class="border-top">
+                                    <div class="card-body">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- editor -->
+        </div>
+        <%- include('./footer') %>

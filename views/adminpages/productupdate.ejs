@@ -1,0 +1,162 @@
+<%- include('./header')%>
+
+    <div class="page-wrapper">
+        <div class="formcontainer">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <form class="form-horizontal" method="post" action="/admin/product/editproductdata" enctype="multipart/form-data">
+                            <input type="hidden" name="EditId" value="<%=productRecord.id%>">
+                            <div class="card-body" style="width: 100%;">
+                                <h4 class="card-title">Product Update</h4>
+                                <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Select
+                                        Category</label>
+                                    <div class="col-12 col-md-9">
+                                        <select name="catogry" id="product-catogry" class="form-control" onchange="return getsubcat()">
+                                            <option value="">Select Category</option>
+                                            <%for(var v of cate){%>
+                                                <option value="<%=v.id%>">
+                                                    <%=v.category%>
+                                                </option>
+                                                <%}%>
+                                        </select>
+                                    </div>
+
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Select
+                                        SubCategory</label>
+                                    <div class="col-12 col-md-9">
+                                        <select name="subcategory" id="Subcatogry" class="form-control" onchange="return getextracat()">
+                                            <option value="">Select SubCategory</option>
+                                            <%for(var v of subcate){%>
+                                                <option value="<%=v.id%>">
+                                                    <%=v.subcategory%>
+                                                </option>
+                                                <%}%>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Add
+                                        Extracategory</label>
+                                    <div class="col-sm-9">
+                                        <select name="extracategory" id="extracategory" class="form-control" onchange="getbrand()">
+                                            <option value="">Select ExtraCategory</option>
+                                            <%for(var v of extracate){%>
+                                                <option value="<%=v.id%>">
+                                                    <%=v.subcategory%>
+                                                </option>
+                                                <%}%>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Add
+                                        Brand</label>
+                                    <div class="col-sm-9">
+                                        <select name="brand" id="brand" class="form-control" onchange="gettype()">
+                                            <option value="">Select Brand</option>
+                                            <%for(var v of brand){%>
+                                                <option value="<%=v.id%>">
+                                                    <%=v.brand%>
+                                                </option>
+                                                <%}%>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="type" class="col-sm-3 text-right control-label col-form-label">Add
+                                        type</label>
+                                    <div class="col-sm-9">
+                                        <!-- <input type="text" id="type" class="form-control" name="type" placeholder="type"> -->
+                                        <select name="type" id="type" class="form-control">
+                                            <option value="">Select Type</option>
+                                            <%for(var v of typeData){%>
+                                                <option value="<%=v.id%>">
+                                                    <%=v.type%>
+                                                </option>
+                                                <%}%>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Product
+                                        Title</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="title" name="title"
+                                            value="<%=productRecord.title%>" placeholder="Add Product Here">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Product
+                                        Price</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="price" name="price"
+                                            value="<%=productRecord.price%>" placeholder="Add Product Here">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Product
+                                        Old Price</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="oldprice" name="oldprice"
+                                            value="<%=productRecord.oldprice%>" placeholder="Add Product Here">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Product
+                                        Colour</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="productColour" name="productColour"
+                                            value="<%=productRecord.productColour%>"
+                                            placeholder="Add Product Colour Here">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Product
+                                        Size</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="productsize" name="productsize"
+                                            value="<%=productRecord.productsize%>" placeholder="Add Product Size Here">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Product
+                                        Discription</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" name="discription" id="discription"
+                                            ><%=productRecord.discription%></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname"
+                                        class="col-sm-3 text-right control-label col-form-label">Product-Image</label>
+                                    <div class="col-sm-9">
+                                        <input type="file" id="productimg" name="productimg" class="form-control-file">
+                                        <img src="<%=productRecord.productimg%>" height="50px" width="50px">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="fname"
+                                        class="col-sm-3 text-right control-label col-form-label">Product-Images</label>
+                                    <div class="col-sm-9">
+                                        <input type="file" id="multipleproductimage" name="multipleproductimage" multiple class="form-control-file">
+                                        <%for(var i=0; i<productRecord.multipleproductimage.length;i++){%>
+                                            <img style="position: relative; " src="<%=productRecord.multipleproductimage[i] %>" height="40" alt="">
+                                        <%}%>
+                                    </div>
+                                </div>
+
+                                <div class="border-top">
+                                    <div class="card-body">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- editor -->
+        </div>
+        <%- include('./footer') %>

@@ -1,0 +1,122 @@
+<%- include('./header')%>
+    <div class="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card" style="width: 1200px; margin-left: -250px;">
+                        <div class="card-body">
+                            <h5 class="card-title m-b-0">Static Table With Checkboxes</h5>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>
+                                            <label class="customcheckbox m-b-20">
+                                                <input type="checkbox" id="mainCheckbox" />
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </th>
+                                        <th scope="col">category</th>
+                                        <th scope="col">Subcategory</th>
+                                        <th scope="col">extracategory</th>
+                                        <th scope="col">brand</th>
+                                        <th scope="col">type</th>
+                                        <th scope="col">title</th>
+                                        <th scope="col">productimg</th>
+                                        <th scope="col">multipleproductimage</th>
+                                        <th scope="col">price</th>
+                                        <th scope="col">oldprice</th>
+                                        <th scope="col">productColour</th>
+                                        <th scope="col">productsize</th>
+                                        <th scope="col">discription</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="customtable">
+                                    <% for(var v of productdata){%>
+                                        <tr>
+                                            <th>
+                                                <label class="customcheckbox">
+                                                    <input type="checkbox" class="listCheckbox" />
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </th>
+                                            <td>
+                                                <%=v.catogry.category%>
+                                            </td>
+                                            <td>
+                                                <%=v.subcategory.subcategory%>
+                                            </td>
+                                            <td>
+                                                <%=v.extracategory.extracategory%>
+                                            </td>
+                                            <td>
+                                                <%=v.brand.brand%>
+                                            </td>
+                                            <td>
+                                                <%=v.type.type%>
+                                            </td>
+                                            <td>
+                                                <%=v.title%>
+                                            </td>
+                                            <td><img src="<%=v.productimg %>" height="40" alt=""></td>
+                                            <td>
+                                                <div class="mydiv2" style="display: flex;">
+                                                    <%for(var i=0; i<v.multipleproductimage.length;i++){%>
+                                                        <div class="mydiv"
+                                                            style="position: relative; width: auto; margin: 0px 10px;">
+                                                            <img style="position: relative; "
+                                                                src="<%=v.multipleproductimage[i] %>" height="40"
+                                                                alt="">
+                                                            <button
+                                                                style="border: none; border: 0; z-index: 9; top: -5px; right: -7px; background-color: transparent !important; position: absolute;"
+                                                                onclick="return deleteimg('<%=v.id%>','<%=i%>','<%=v.multipleproductimage[i] %>')"><img
+                                                                    src="/images/icon/close.png" style="width: 20px;"
+                                                                    alt=""></button>
+                                                        </div>
+                                                        <%}%>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <%=v.price%>
+                                            </td>
+                                            <td>
+                                                <%=v.oldprice%>
+                                            </td>
+                                            <td>
+                                                <%=v.productColour%>
+                                            </td>
+                                            <td>
+                                                <%=v.productsize%>
+                                            </td>
+                                            <td>
+                                                <%=v.discription%>
+                                            </td>
+
+                                            <td>
+                                                <%if(v.isActive){%>
+                                                    <a href="/admin/product/isactive/<%=v.id%>"
+                                                        class="alert-success px-1 text-grey">Active</a>
+                                                    <%} else{%>
+                                                        <a href="/admin/product/deactive/<%=v.id%>"
+                                                            class="alert-danger px-1 text-grey">Deactive</a>
+                                                        <%}%>
+                                            </td>
+                                            <td>
+                                                <a href="/admin/product/productupdateData/<%=v.id%>"><i
+                                                        class="m-r-10 mdi mdi-border-color"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <%}%>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('./footer') %>

@@ -1,0 +1,112 @@
+<script src="/libs/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="/extra-libs/sparkline/sparkline.js"></script>
+<!--Wave Effects -->
+<script src="/js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="/js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="/js/custom.min.js"></script>
+<!--This page JavaScript -->
+<!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
+<!-- Charts js Files -->
+<script src="/libs/flot/excanvas.js"></script>
+<script src="/libs/flot/jquery.flot.js"></script>
+<script src="/libs/flot/jquery.flot.pie.js"></script>
+<script src="/libs/flot/jquery.flot.time.js"></script>
+<script src="/libs/flot/jquery.flot.stack.js"></script>
+<script src="/libs/flot/jquery.flot.crosshair.js"></script>
+<script src="/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+<script src="/js/pages/chart/chart-page-init.js"></script>
+
+</body>
+
+</html>
+
+<script>
+    function getsubcat(){
+        var catid= document.getElementById("product-catogry").value;
+        $.ajax({
+            url:"/admin/subcatogry/getsubcat",
+            method:"post",
+            data:{
+                catid:catid
+            },
+            success:function(res){
+                $('#Subcatogry').html(res)
+                $('#Subcatogry').removeAttr('disabled','disabled')
+            }
+        })
+    }
+    $('#Subcatogry').attr('disabled','disabled')
+
+
+    function getextracat(){
+        var subcatid= document.getElementById("Subcatogry").value;
+        $.ajax({
+            url:"/admin/subcatogry/getextracat",
+            method:"post",
+            data:{
+                subcatid:subcatid
+            },
+            success:function(res){
+                $('#extracategory').html(res)
+                $('#extracategory').removeAttr('disabled','disabled')
+            }
+        })
+    }
+    $('#extracategory').attr('disabled','disabled')
+
+    function getbrand(){
+        var extracatid= document.getElementById("extracategory").value;
+        $.ajax({
+            url:"/admin/subcatogry/getbrand",
+            method:"post",
+            data:{
+                extracatid:extracatid
+            },
+            success:function(res){
+                $('#brand').html(res)
+                $('#brand').removeAttr('disabled','disabled')
+            }
+        })
+    }
+    $('#brand').attr('disabled','disabled')
+
+    function gettype(){
+        var brandid= document.getElementById("brand").value;
+        $.ajax({
+            url:"/admin/subcatogry/gettype",
+            method:"post",
+            data:{
+                brandid:brandid
+            },
+            success:function(res){
+                $('#type').html(res)
+                $('#type').removeAttr('disabled','disabled')
+            }
+        })
+    }
+    $('#type').attr('disabled','disabled')
+
+
+    function deleteimg(id,i,img){
+      console.log(id);
+      console.log(i);
+      $.ajax({
+        url:"/admin/product/deleteimg",
+        method:"post",
+        data:{
+          'id':id,
+          'i':i,
+          'img':img
+        },
+        success:function(res){
+          location.reload();
+        }
+      })
+    }
+</script>

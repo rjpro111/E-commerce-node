@@ -1,0 +1,43 @@
+<%- include('./header')%>
+
+    <div class="page-wrapper" style="width: 130%;">
+        <div class="formcontainer">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card" style="margin: 0  0  0  -80px;">
+                        <div class="card-body" style="width: 100%;">
+                            <h4 class="card-title">Category Info</h4>
+                            <div class="form-group row">
+                                <label for="lname" class="col-sm-3 text-right control-label col-form-label">Select
+                                    Category</label>
+                                <div class="col-12 col-md-9">
+                                    <select class="form-select" name="category" id="product-category" style="width: 100%;">
+                                        <option><%=subdata.catogry.category%></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="form-horizontal" method="post" action="/admin/subcatogry/editsubcatogrydata">
+                            <input type="hidden" name="EditId" value="<%=subdata.id%>">
+                            <div class="card-body" style="width: 100%;">
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Add
+                                        Subcategory</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="fname" name="subcategory"
+                                            value="<%=subdata.subcategory%>" placeholder="First Name Here">
+                                    </div>
+                                </div>
+
+                                <div class="border-top">
+                                    <div class="card-body">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- editor -->
+        </div>
+        <%- include('./footer') %>
